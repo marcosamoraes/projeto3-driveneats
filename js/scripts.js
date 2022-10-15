@@ -129,17 +129,20 @@ function addProduct(product, element) {
   let div = document.createElement("div");
   div.setAttribute("id", product.type + "-" + product.id);
   div.setAttribute("class", "card " + product.type);
+  div.setAttribute("data-test", "food-option");
   let img = document.createElement("img");
   img.src = product.image;
   img.alt = product.name;
   let title = document.createElement("p");
   title.setAttribute("class", "title");
+  title.setAttribute("data-test", "food-title");
   title.textContent = product.name;
   let description = document.createElement("p");
   description.setAttribute("class", "description");
   description.textContent = product.description;
   let value = document.createElement("p");
   value.setAttribute("class", "value");
+  value.setAttribute("data-test", "food-price");
   value.textContent = "R$ " + product.value.toFixed(2).replace(".", ",");
   let icon = document.createElement("ion-icon");
   icon.setAttribute("name", "checkmark-circle");
@@ -211,7 +214,7 @@ function finishOrder() {
     dessert.name +
     "\n" +
     "- Total: R$ " +
-    total.toFixed(2);
+    total.toFixed(2).replace(".", ",");
   text = encodeURIComponent(text);
   button.setAttribute('href', 'https://wa.me/5517981463338?text=' + text);  
 }
